@@ -5,8 +5,8 @@ const ReactModal = ({ isOpen, closeHandler, children }) => {
   if (!isOpen) return null;
 
   return (
-      <div className="modal__container">
-        <div className="modal__box">
+      <div className="modal__container" onClick={closeHandler}>
+        <div className="modal__box" onClick={(e) => e.stopPropagation()}>
           <div className="modal__header">
             <div className="modal__header-title">Title</div>
             <div className="modal__header-close" onClick={closeHandler}>X</div>

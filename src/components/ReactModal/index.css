@@ -17,12 +17,18 @@
   background: #e2e2e2;
   height: auto;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .modal__header {
   display: grid;
   grid-template-columns: 4fr 1fr;
-  color: #0857ef;
+  color: #1f1f1f;
+}
+
+.modal__header-title {
+  text-align: left;
+  font-weight: 700;
 }
 
 .modal__header-close {
@@ -32,17 +38,25 @@
 }
 
 .modal__footer-button {
-  color: #231f1f;
+  color: #ece7e7;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 5px;
+  border: none;
 }
 
 .modal__footer-button--close {
-  background-color: transparent;
-  border: 1px solid #452a17;
+  background-color: #66747d;
+}
+
+.modal__footer-button--close:hover {
+  background-color: #556971;
 }
 
 .modal__footer-button--accept {
-  background-color: rgba(106, 187, 73, 0.93);
-  border: 1px solid #452a17;
+  background-color: #137b4e;
+}
+
+.modal__footer-button--accept:hover {
+  background-color: #0d6540;
 }
