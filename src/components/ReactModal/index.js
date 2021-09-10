@@ -1,14 +1,23 @@
 import React from "react";
-import './index.css'
+import PropTypes from "prop-types";
+import "./index.css"
 
-const ReactModal = ({ isOpen, closeHandler, children }) => {
+const defaultProps = {
+  config: {
+    title: "Default title",
+    onBgClose: true,
+  }
+}
+
+const ReactModal = ({ isOpen, closeHandler, config, children }) => {
+  const modalConfig = Object.assign({}, defaultProps.config, config);
   if (!isOpen) return null;
 
   return (
-      <div className="modal__container" onClick={closeHandler}>
+      <div className="modal__container" onClick={() => modalConfig.onBgClose ? closeHandler() : null}>
         <div className="modal__box" onClick={(e) => e.stopPropagation()}>
           <div className="modal__header">
-            <div className="modal__header-title">Title</div>
+            <div className="modal__header-title">{modalConfig.title}</div>
             <div className="modal__header-close" onClick={closeHandler}>X</div>
           </div>
           <div className="modal__content">{children}</div>
@@ -22,3 +31,20 @@ const ReactModal = ({ isOpen, closeHandler, children }) => {
 }
 
 export default ReactModal
+
+ReactModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  closeHandler: PropTypes.func.isRequired,
+  children: PropTypes.node,
+  config: PropTypes.shape({
+    title: PropTypes.string,
+    onBgClose: PropTypes.bool,
+  })
+};
+
+ReactModal.defaultProps = {
+  config: {
+    title: 'Default Title',
+    onBgClose: true
+  }
+}

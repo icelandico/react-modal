@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <div className="main__container">
         <button className="main__container-button" onClick={() => setModalOpened(true)}>Open Modal</button>
-        <ReactModal closeHandler={() => setModalOpened(false)} isOpen={modalOpened} />
+        <ReactModal closeHandler={() => setModalOpened(false)} isOpen={modalOpened} config={{ onBgClose: false }}/>
       </div>
     </div>
   );
