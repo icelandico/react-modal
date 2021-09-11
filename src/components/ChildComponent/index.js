@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const ChildComponent = () => {
+
+  const apiFetch = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    return response.json()
+  }
+
+  useEffect(() => {
+    apiFetch();
+  })
+
   return (
       <div>
         <p>Some example text</p>

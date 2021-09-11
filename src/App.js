@@ -6,7 +6,6 @@ import ChildComponent from "./components/ChildComponent";
 function App() {
   const [modalOpened, setModalOpened] = useState(false);
 
-
   return (
     <div className="App">
       <div className="main__container">

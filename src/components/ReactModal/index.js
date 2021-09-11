@@ -6,6 +6,7 @@ const defaultProps = {
   config: {
     title: "Default title",
     onBgClose: true,
+    footerDisabled: false,
   }
 }
 
@@ -13,9 +14,7 @@ const ReactModal = ({ isOpen, closeHandler, config, modalContent }) => {
   const modalConfig = Object.assign({}, defaultProps.config, config);
   if (!isOpen) return null;
 
-  const handleAsyncAction = () => {
-    setTimeout(() => closeHandler(), 3000)
-  }
+  const handleAsync = () => closeHandler()
 
   return (
       <div className="modal__container" onClick={() => modalConfig.onBgClose ? closeHandler() : null}>
@@ -25,10 +24,13 @@ const ReactModal = ({ isOpen, closeHandler, config, modalContent }) => {
             <div className="modal__header-close" onClick={closeHandler}>X</div>
           </div>
           <div className="modal__content">{modalContent}</div>
-          <div className="modal__footer">
-            <button className="modal__footer-button modal__footer-button--close" onClick={closeHandler}>Close</button>
-            <button className="modal__footer-button modal__footer-button--accept" onClick={() => handleAsyncAction()}>Accept</button>
-          </div>
+          {
+            !modalConfig.footerDisabled &&
+            <div className="modal__footer">
+              <button className="modal__footer-button modal__footer-button--close" onClick={closeHandler}>Close</button>
+              <button className="modal__footer-button modal__footer-button--accept" onClick={() => handleAsync()}>Accept</button>
+            </div>
+          }
         </div>
       </div>
   )
@@ -43,6 +45,7 @@ ReactModal.propTypes = {
   config: PropTypes.shape({
     title: PropTypes.string,
     onBgClose: PropTypes.bool,
+    footerDisabled: PropTypes.bool,
   })
 };
 
