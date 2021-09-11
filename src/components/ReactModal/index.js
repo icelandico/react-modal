@@ -13,6 +13,10 @@ const ReactModal = ({ isOpen, closeHandler, config, modalContent }) => {
   const modalConfig = Object.assign({}, defaultProps.config, config);
   if (!isOpen) return null;
 
+  const handleAsyncAction = () => {
+    setTimeout(() => closeHandler(), 3000)
+  }
+
   return (
       <div className="modal__container" onClick={() => modalConfig.onBgClose ? closeHandler() : null}>
         <div className="modal__box" onClick={(e) => e.stopPropagation()}>
@@ -23,7 +27,7 @@ const ReactModal = ({ isOpen, closeHandler, config, modalContent }) => {
           <div className="modal__content">{modalContent}</div>
           <div className="modal__footer">
             <button className="modal__footer-button modal__footer-button--close" onClick={closeHandler}>Close</button>
-            <button className="modal__footer-button modal__footer-button--accept">Accept</button>
+            <button className="modal__footer-button modal__footer-button--accept" onClick={() => handleAsyncAction()}>Accept</button>
           </div>
         </div>
       </div>
