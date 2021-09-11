@@ -9,7 +9,7 @@ const defaultProps = {
   }
 }
 
-const ReactModal = ({ isOpen, closeHandler, config, children }) => {
+const ReactModal = ({ isOpen, closeHandler, config, modalContent }) => {
   const modalConfig = Object.assign({}, defaultProps.config, config);
   if (!isOpen) return null;
 
@@ -20,7 +20,7 @@ const ReactModal = ({ isOpen, closeHandler, config, children }) => {
             <div className="modal__header-title">{modalConfig.title}</div>
             <div className="modal__header-close" onClick={closeHandler}>X</div>
           </div>
-          <div className="modal__content">{children}</div>
+          <div className="modal__content">{modalContent}</div>
           <div className="modal__footer">
             <button className="modal__footer-button modal__footer-button--close" onClick={closeHandler}>Close</button>
             <button className="modal__footer-button modal__footer-button--accept">Accept</button>
@@ -35,7 +35,7 @@ export default ReactModal
 ReactModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeHandler: PropTypes.func.isRequired,
-  children: PropTypes.node,
+  modalContent: PropTypes.node,
   config: PropTypes.shape({
     title: PropTypes.string,
     onBgClose: PropTypes.bool,

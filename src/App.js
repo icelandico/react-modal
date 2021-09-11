@@ -10,9 +10,11 @@ function App() {
     <div className="App">
       <div className="main__container">
         <button className="main__container-button" onClick={() => setModalOpened(true)}>Open Modal</button>
-        <ReactModal closeHandler={() => setModalOpened(false)} isOpen={modalOpened} config={{ title: "Test Header" }}
-
-        ><ChildComponent /></ReactModal>
+        <ReactModal closeHandler={() => setModalOpened(false)}
+                    isOpen={modalOpened}
+                    config={{ title: "Test Header" }}
+                    modalContent={<ChildComponent />}
+        />
       </div>
     </div>
   );
